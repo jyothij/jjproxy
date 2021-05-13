@@ -23,12 +23,14 @@ The upstream post endpoint can be any dummy endpoint. For example you can write 
   - `build` to build the application
   - `run` to execute what's needed to run the server. You can use `HTTP_PORT` variable to specify on which port the proxy binds
 - Deliver the project via a public GitHub repository
+- **Proxy Port 8081 on local server and 8082 via docker**
+- **Docker image myjjproxy, and service myproxy**
 
 ## Bonus Points:
 - :heavy_check_mark: Provide `/status` page with
   - time from start
   - number of requests processed
-- :X: Use asyncronous programming
-- :X: Provide tests covering the functionality
-- :X: Extend `Makefile` with a `test` target executing the tests covering the functionality
+- :x: Use asyncronous programming
+- :x: Provide tests covering the functionality
+- :x: Extend `Makefile` with a `test` target executing the tests covering the functionality
 
