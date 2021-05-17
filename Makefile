@@ -1,4 +1,4 @@
-.PHONY: run build clean lint help
+.PHONY: run build clean lint help test test-build
 
 .DEFAULT_GOAL := help
 
@@ -17,6 +17,12 @@ clean:
 build:
 	@pip install -r requirements.txt
 
+test-build: 
+	@pip install -r requirements-test.txt
+
 run:
 	export HTTP_PORT=$(HTTP_PORT)
-	@python app.py 
+	@python app.py
+
+test: 
+	@pytest -vrx tests/all-tests.py
