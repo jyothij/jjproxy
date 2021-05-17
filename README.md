@@ -29,6 +29,6 @@ The upstream post endpoint can be any dummy endpoint. For example you can write 
   - time from start
   - number of requests processed
 - :X: Use asyncronous programming
-- :X: Provide tests covering the functionality
-- :X: Extend `Makefile` with a `test` target executing the tests covering the functionality
+- :heavy_check_mark: Provide tests covering the functionality
+- :heavy_check_mark: Extend `Makefile` with a `test` target executing the tests covering the functionality
 
