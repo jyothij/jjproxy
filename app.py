@@ -49,7 +49,7 @@ class ProxyHandler(BaseHTTPRequestHandler):
         try:
             try:
                 sio = StringIO()
-                logging.info(f'Received GET request at {time.time()}')
+                logging.info(f'Received GET request at {time.asctime()}')
                 logging.debug(f'{type(self.path)}')
                 if self.path == '/status':
                     logging.info('Got status request')
@@ -68,7 +68,7 @@ class ProxyHandler(BaseHTTPRequestHandler):
                 self.wfile.write(bytes(sio.getvalue(), 'utf-8'))
                 return
             finally:
-                logging.info(f'Processed GET request at {time.time()}')
+                logging.info(f'Processed GET request at {time.asctime()}')
                 sio.close()
         except Exception as e:
             self.send_error(500, f'{type(e)} error')
@@ -78,7 +78,7 @@ class ProxyHandler(BaseHTTPRequestHandler):
         global requestCount
         requestCount += 1
         try:
-            logging.info(f'Received POST request at {time.time()}')
+            logging.info(f'Received POST request at {time.asctime()}')
             contentLength = int(self.headers['Content-Length'])
             body = self.rfile.read(contentLength)
             host = hostTarget
@@ -96,17 +96,17 @@ class ProxyHandler(BaseHTTPRequestHandler):
             self.send_header('Content-Length', length)
             self.end_headers()
             self.wfile.write(rc)
-            logging.info(f'Sent POST response back request at {time.time()}')
+            logging.info(f'Sent POST response back request at {time.asctime()}')
         except Exception as e:
             self.send_error(500, f'{type(e)} error')
             logging.error(str(e))
         finally:
-            logging.info(f'Processed POST request at {time.time()}')
+            logging.info(f'Processed POST request at {time.asctime()}')
 
 
 def main():
     global timeStart
-    host = os.getenv('HOST', '0.0.0.0')
+    host = os.getenv('HOST', '127.0.0.1')
     port = int(os.getenv('HTTP_PORT', 8081))
     logging.basicConfig(level=os.environ.get("LOGLEVEL", "INFO"))
     try:
